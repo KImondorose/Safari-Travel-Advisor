@@ -1,3 +1,3 @@
 # The Travel-WordFinder
 
-![hello](https://github.com/tiaplagata/capstone-project/blob/main/Images/The%20Destination%20Dictionary.png?raw=true)
+![hello](https://raw.githubusercontent.com/KImondorose/Travel-WordFinder/refs/heads/main/images/trees-coast-waves.avif)
