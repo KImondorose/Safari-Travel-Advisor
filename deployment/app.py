@@ -20,35 +20,37 @@ nltk.download('punkt_tab')
 lemmatizer = WordNetLemmatizer()
 
 
-# Add custom CSS for styling without background image
-def add_styles():
+# Dynamic theme styles
+def add_dynamic_styles():
     st.markdown(
-        f"""
+        """
         <style>
-        .header-title {{
-            color: #4CAF50;
+        /* Adjust text color based on theme */
+        .header-title {
             font-size: 2.5em;
             font-weight: bold;
             text-align: center;
-        }}
-        .header-icon {{
-            font-size: 3em;
+        }
+        .dark-theme .header-title {
             color: #4CAF50;
-        }}
-        .card {{
-            background-color: #F5F5F5;
+        }
+        .light-theme .header-title {
+            color: #333;
+        }
+        .card {
             padding: 15px;
             margin: 10px;
             border-radius: 8px;
             box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-        }}
-        .card h3 {{
-            margin: 0;
-            color: #4CAF50;
-        }}
-        .card p {{
-            margin: 5px 0;
-        }}
+        }
+        .dark-theme .card {
+            background-color: #2C2C2C;
+            color: #FFF;
+        }
+        .light-theme .card {
+            background-color: #F5F5F5;
+            color: #333;
+        }
         </style>
         """,
         unsafe_allow_html=True
