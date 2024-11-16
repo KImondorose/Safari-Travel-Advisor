@@ -64,10 +64,6 @@ def add_header():
         </div>
     """, unsafe_allow_html=True)
 
-import os
-st.write("Current working directory:", os.getcwd())
-st.write("Files and directories in the working directory:", os.listdir())
-
 # Load pre-trained model and vectorizer
 # model_path = os.path.abspath('/mount/src/travel-wordfinder/deployment/final_model.pkl')
 
