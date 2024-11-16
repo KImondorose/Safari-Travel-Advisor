@@ -6,6 +6,19 @@ import pandas as pd
 import joblib
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+import nltk
+from nltk.corpus import wordnet
+from nltk.stem import WordNetLemmatizer
+from nltk.tokenize import word_tokenize
+
+# Download NLTK resources
+nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+
+# Initialize NLTK Lemmatizer
+lemmatizer = WordNetLemmatizer()
+
 
 # Add custom CSS for styling without background image
 def add_styles():
@@ -61,19 +74,21 @@ def load_preprocessed_data():
 
 preprocessed_df = load_preprocessed_data()
 
-# Function to preprocess text
+# Function to preprocess text using NLTK lemmatizer
 def preprocess_text(text):
     """
     Input raw text.
-    Return preprocessed text.
+    Return preprocessed and lemmatized text using NLTK.
     """
-    nlp = spacy.load('en_core_web_sm')
-    preprocessed = nlp(text)
+    # Lowercase and remove punctuation
+    text = text.lower()
+    text = re.sub(f"[{re.escape(string.punctuation)}]", "", text)
+    text = re.sub(r"\w*\d\w*", "", text)  # Remove words containing numbers
 
-    preprocessed = text.lower()
-    preprocessed = re.sub('[%s]' % re.escape(string.punctuation), '', preprocessed)
-    preprocessed = re.sub('\w*\d\w*', '', preprocessed)
-    return [preprocessed]
+    # Tokenize and lemmatize
+    tokens = word_tokenize(text)
+    lemmatized_tokens = [lemmatizer.lemmatize(token) for token in tokens]
+    return [" ".join(lemmatized_tokens)]
 
 # Add custom styles
 add_styles()
