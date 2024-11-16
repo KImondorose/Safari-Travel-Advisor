@@ -1,3 +1,4 @@
+# most of these modules need to be added to the requirements.txt file so that they can load on streamlit
 import streamlit as st
 import re
 import string
@@ -60,12 +61,14 @@ def add_dynamic_styles():
 def add_header():
     st.markdown("""
         <div>
-            <h1 class="header-title">🌍 Travel Destination Recommender</h1>
+            <h1 class="header-title">🌍 Travel Destination Predictor</h1>
         </div>
     """, unsafe_allow_html=True)
 
 # Load pre-trained model and vectorizer
-# model_path = os.path.abspath('/mount/src/travel-wordfinder/deployment/final_model.pkl')
+# for local deployment, use the actual paths e.g for the final model,
+# final_model = joblib.load('final_model.pkl')
+# The path used below is necessiated for streamlit online deployment
 
 final_model = joblib.load('/mount/src/travel-wordfinder/deployment/final_model.pkl')
 vectorizer_final = joblib.load('/mount/src/travel-wordfinder/deployment/vectorizer_final.pkl')
@@ -149,6 +152,6 @@ if st.button("PREDICT"):
 st.markdown("""
     <hr>
     <div style="text-align: center; font-size: 0.9em; color: #888;">
-        Created with ❤️ Created with ❤️ by <a href="https://github.com/KImondorose/Travel-WordFinder" target="_blank" style="color: #4CAF50; text-decoration: none;">Group 10</a>
+        View code on <a href="https://github.com/KImondorose/Travel-WordFinder" target="_blank" style="color: #4CAF50; text-decoration: none;">GitHub</a>
     </div>
 """, unsafe_allow_html=True)
