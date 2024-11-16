@@ -75,7 +75,7 @@ vectorizer_final = joblib.load('/mount/src/travel-wordfinder/deployment/vectoriz
 # Load preprocessed dataset dynamically
 @st.cache_data
 def load_preprocessed_data():
-    return pd.read_csv('preprocessed_df.csv')
+    return pd.read_csv('/mount/src/travel-wordfinder/deployment/preprocessed_df.csv')
 
 preprocessed_df = load_preprocessed_data()
 
