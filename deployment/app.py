@@ -68,6 +68,16 @@ st.write("Files and directories in the working directory:", os.listdir())
 
 # Load pre-trained model and vectorizer
 model_path = os.path.abspath('final_model.pkl')
+model_path = os.path.abspath("final_model.pkl")
+st.write("Looking for model at:", model_path)
+
+if not os.path.exists(model_path):
+    st.error("Model file not found. Listing all files in deployment environment.")
+    for root, dirs, files in os.walk("."):
+        st.write(f"Directory: {root}")
+        st.write(f"Files: {files}")
+else:
+    st.success("Model file found!")
 final_model = joblib.load(model_path)
 vectorizer_final = joblib.load('vectorizer_final.pkl')
 
