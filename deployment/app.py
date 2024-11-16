@@ -60,12 +60,11 @@ def add_dynamic_styles():
 def add_header():
     st.markdown("""
         <div>
-            <span class="header-icon">🌍</span>
-            <h1 class="header-title">Travel Destination Predictor</h1>
+            <h1 class="header-title">🌍 Travel Destination Recommender</h1>
         </div>
     """, unsafe_allow_html=True)
-import os
 
+import os
 st.write("Current working directory:", os.getcwd())
 st.write("Files and directories in the working directory:", os.listdir())
 
