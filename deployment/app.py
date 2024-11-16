@@ -14,6 +14,7 @@ from nltk.tokenize import word_tokenize
 nltk.download('punkt')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
+nltk.download('punkt_tab')
 
 # Initialize NLTK Lemmatizer
 lemmatizer = WordNetLemmatizer()
