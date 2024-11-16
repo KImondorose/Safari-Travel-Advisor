@@ -61,9 +61,14 @@ def add_header():
             <h1 class="header-title">Travel Destination Predictor</h1>
         </div>
     """, unsafe_allow_html=True)
+import os
+
+st.write("Current working directory:", os.getcwd())
+st.write("Files and directories in the working directory:", os.listdir())
 
 # Load pre-trained model and vectorizer
-final_model = joblib.load('final_model.pkl')
+model_path = os.path.abspath('final_model.pkl')
+final_model = joblib.load(model_path)
 vectorizer_final = joblib.load('vectorizer_final.pkl')
 
 # Load preprocessed dataset dynamically
