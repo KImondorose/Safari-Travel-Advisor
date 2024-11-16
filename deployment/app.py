@@ -67,7 +67,7 @@ st.write("Current working directory:", os.getcwd())
 st.write("Files and directories in the working directory:", os.listdir())
 
 # Load pre-trained model and vectorizer
-model_path = os.path.abspath('final_model.pkl')
+model_path = '/mount/src/travel-wordfinder/deployment/final_model.pkl'
 model_path = os.path.abspath("final_model.pkl")
 st.write("Looking for model at:", model_path)
 
