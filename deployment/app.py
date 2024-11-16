@@ -99,7 +99,7 @@ def preprocess_text(text):
     return [" ".join(lemmatized_tokens)]
 
 # Add custom styles
-add_styles()
+add_dynamic_styles()
 
 # Add header
 add_header()
