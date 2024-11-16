@@ -1,5 +1,4 @@
 import streamlit as st
-import spacy
 import re
 import string
 import pandas as pd
