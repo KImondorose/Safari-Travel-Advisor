@@ -157,7 +157,7 @@ We fine-tuned several models (Logistic Regression, Naive Bayes, GradientBoost, R
 
 ![alt text](images/image-4.png)
 
-# Conclusions
+# Conclusions 
 
 The final model is the GradientBoost Classifier, which can predict a destination with 54% accuracy and a 57% F1 score (Iteration two of the GB Classifier in this notebook with Count Vectorization). The higher the F1 score, the better is the performance of our model, and this model has the best F1 score, and the least variation between the test and train accuracies, making it the least overfit. It will generalize best to unseen data.
 
