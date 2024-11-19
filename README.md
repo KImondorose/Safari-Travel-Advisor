@@ -1,6 +1,6 @@
  # **Safari Travel Advisor**
 
-![hello](https://raw.githubusercontent.com/KImondorose/Travel-WordFinder/refs/heads/main/images/swimmer-in-blue-water-aerial.avif)
+![hello](https://github.com/KImondorose/Travel-WordFinder/blob/main/images/Travel_Word_Finder.png)
 
  Slideshow Presentation
 
