@@ -1,6 +1,6 @@
  # **Safari Travel Advisor**
 
-![hello](https://github.com/KImondorose/Travel-WordFinder/blob/main/images/Travel_Word_Finder.png)
+![hello](images/Safari_Travel_Advisor.png)
  
  Web App- [Safari Travel Advisor](https://safari-travel-advisor.streamlit.app/)
 
