@@ -1,22 +1,21 @@
  # **Safari Travel Advisor**
 
 ![hello](https://github.com/KImondorose/Travel-WordFinder/blob/main/images/Travel_Word_Finder.png)
+ 
+ Web App- [Safari Travel Advisor](https://safari-travel-advisor.streamlit.app/)
 
- Slideshow Presentation
+ [Slideshow Presentation]()
 
- Jupyter Notebook with Cleaning and Questions
+ [Jupyter Notebook with Cleaning and Questions](https://github.com/KImondorose/Travel-WordFinder/blob/main/main_notebook.ipynb)
 
- Notebook PDF
-
-[gitignore file](https://github.com/KImondorose/Travel-WordFinder/blob/main/.gitignore)
+ [Notebook PDF](https://github.com/KImondorose/Travel-WordFinder/blob/main/main_notebook.pdf)
 
  [Data Sources](https://github.com/KImondorose/Travel-WordFinder/tree/main/Data)
 
  [Individual Group Member Contributions](https://github.com/KImondorose/Travel-WordFinder/tree/main/work_in_progress)
 
- Deployment
 
- 
+
  # Introduction, Business Statement, and Business Understanding
 
  ## Introduction and Problem Statement
@@ -103,7 +102,7 @@ We handled duplicate values by dropping the columns since the records were repet
 
 ## Exploratory Data Analysis
 
-![alt text](image.png)
+![alt text](images/image.png)
 
 Class imbalance was noted particularly between the Asia/Europe/North America group (which has much more data) and the Africa/Oceania/South America/Middle East group (which has fewer data points). we need to address the imbalance
 
@@ -125,11 +124,11 @@ Class imbalance was noted particularly between the Asia/Europe/North America gro
 
 Word clouds illustrating  description of top  attractions in the dataset
 
-  ![alt text](image-1.png)
+  ![alt text](images/image-1.png)
 
 Sample  word clouds for various countries such as Kenya
 
-![alt text](image-2.png)
+![alt text](images/image-2.png)
 
 # EDA Conclusions and Recommendations
 - Countries like Canada, India, Australia, United States, Italy, and France have the highest number of attractions, each showing around 1,000+ attractions in the dataset. These high counts likely indicate these countries have diverse or popular tourist destinations, making them significant for the tourism industry.
@@ -152,11 +151,11 @@ MNB Iteration Three- Using Class Weights to Improve Class Imbalance
 
 # Model Tuning
 
-We fine-tuned several models (Logistic Regression, Naive Bayes, Decision Tree, etc.) using grid search. The best-performing model was a Gradient Boosting model .
+We fine-tuned several models (Logistic Regression, Naive Bayes, GradientBoost, Random Forest, KNN, and Decision Tree) using grid search. The best-performing model was a Gradient Boosting model .
 
-![alt text](image-3.png)
+![alt text](images/image-3.png)
 
-![alt text](image-4.png)
+![alt text](images/image-4.png)
 
 # Conclusions
 
@@ -168,5 +167,34 @@ The data put into this model is lowercased, punctuations removed, lemmatized, an
 - **Travel Enthusiasts/Travelers**: The interactive dashboard created offers an opportunity for travel enthusiasts to shorten the time involved in decision making based on their likes and interests. Through this, they could get an opportunity to explore their best interests despite having limited time. The product simplifies their search for an appropriate travel destination.
 
 - **Travel platforms and websites**: :Travel platforms should broaden their content to include a wider range of countries, particularly those currently underrepresented. This approach would offer more balanced visibility to diverse regions with unique attractions.
+- **Destination Marketers:** 
+  - The project highlights the limitations in vocabulary used to descibe top attractions in countries such as museum, art gallery, unesco world heritage, which could point to a bias in the marketing of top attractions, focusing on specific types of attractions only. Destination marketers can apply this knowledge and integrate a broader marketing approach that could highlight the rare but unique destinations to present a more balanced image.
 
+  - Enhance Kenyan Destination Marketing:Promote Kenya's coastal beaches, urban culture, and adventure sports alongside its wildlife offerings. Use comprehensive language in promotional materials to portray Kenya as a multi-faceted destination, attracting a broader range of tourists.
+
+# Future Work
+# Future Implementation
+1. Refine Machine Learning Model:Improve the text classification model's accuracy, especially for underrepresented countries.
+
+2. Integrate with Travel Platforms:Implement the machine learning model as a personalized recommendation tool on travel websites and apps. This AI-driven feature could help users discover new destinations based on their preferences.
+
+3. Data Expansion and Enrichment:
+    - *Incorporate Additional Data*: Include diverse travel websites, lesser-known attractions, and user-generated content.
+    - *Geospatial Data*: Integrate location data to enhance recommendation accuracy based on destination types.
+4. Advanced NLP Techniques:
+    - *Deep Learning Models*: Utilize transformers (e.g., BERT, GPT) for improved text classification accuracy.
+    - *Topic Modeling*: Apply techniques like Latent Dirichlet Allocation to uncover hidden topics in travel descriptions.
+5. User Profiling and Personalization: 
+    - *User Profiles*: Create profiles based on travel history and preferences for personalized recommendations.
+    - *Adaptive Recommendations*: Refine suggestions based on user interactions and feedback.
+6. Mobile App Development:
+    - Create an app offering real-time recommendations based on user preferences, travel deals, and seasonal factors.
+    - Incorporate user feedback for continuous model improvement.
+
+# Deployment
+
+- We used Streamlit to deploy our final product as a web app where users can search for their predicted destinations based on their interests or preferences. 
+
+- The web app is deployed and hosted [here](https://safari-travel-advisor.streamlit.app/).
+![Safari Travel Advisor](images/Safari_Travel_Advisor.png)
 
