@@ -4,7 +4,7 @@
  
  Web App- [Safari Travel Advisor](https://safari-travel-advisor.streamlit.app/)
 
- [Slideshow Presentation]()
+ [Slideshow Presentation](https://www.canva.com/design/DAGW3KYcMBw/y9W7zhPEvOwhzUEG1OOuYQ/edit)
 
  [Jupyter Notebook with Cleaning and Questions](https://github.com/KImondorose/Travel-WordFinder/blob/main/main_notebook.ipynb)
 
@@ -13,8 +13,6 @@
  [Data Sources](https://github.com/KImondorose/Travel-WordFinder/tree/main/Data)
 
  [Individual Group Member Contributions](https://github.com/KImondorose/Travel-WordFinder/tree/main/work_in_progress)
-
-
 
  # Introduction, Business Statement, and Business Understanding
 
@@ -143,17 +141,34 @@ Sample  word clouds for various countries such as Kenya
 ## Baseline Model-Multinomial Naive Bayes(MNB)
 
 ## MNB Iteration One
-A logistic regression model was built using a pipeline with a CountVectorizer. The model achieved an accuracy score of 68% on the test set.
+A logistic regression model was built using a pipeline with a CountVectorizer. The model achieved an accuracy score of 52% on the test set and an F1 score of 48%.
 
-## MNB Iteration Two- Using Count Vectorizer
+## Modeling Iterations
+Multiple iterations were conducted with various models, including Multinomial Naive Bayes (MNB), Random Forest, Gradient Boosting, Decision Trees, Logistic Regression, Support Vector Classifier (SVC), and K-Nearest Neighbors (KNN). Key efforts included:
 
-MNB Iteration Three- Using Class Weights to Improve Class Imbalance
+- Addressing class imbalance using oversampling techniques (Random Oversampling, SMOTE) and class weights.
+- Exploring TF-IDF vectorization versus CountVectorization.
+- Including bi-grams for feature engineering.
+- Adding country names to the stop word list.
+- Hyperparameter tuning to optimize model performance.
 
 # Model Tuning
 
-We fine-tuned several models (Logistic Regression, Naive Bayes, GradientBoost, Random Forest, KNN, and Decision Tree) using grid search. The best-performing model was a Gradient Boosting model .
+We fine-tuned several models (Logistic Regression, Naive Bayes, GradientBoost, Random Forest, KNN, and Decision Tree) using grid search. The best-performing model was a Gradient Boosting model.
 
 ![alt text](images/image-3.png)
+
+# Final Model and Its Selection
+The final model is the GradientBoost Classifier, which can predict a destination with 54% accuracy and a 57% F1 score (Iteration two of the GB Classifier in this notebook with Count Vectorization). The higher the F1 score, the better is the performance of our model, and this model has the best F1 score, and the least variation between the test and train accuracies, making it the least overfit. It will generalize best to unseen data.
+
+Accuracy and F1 score were used to evaluate model performance. With 25 target classes, accuracy is critical to gauge overall correctness. However, due to class imbalance, the weighted F1 score was prioritized to account for false positives and false negatives, offering a balanced perspective between precision and recall.
+
+The selected model demonstrated one of the highest accuracies while avoiding overfitting, making it a strong candidate compared to other models. Although it performs well in predicting across 25 classes, further improvement is needed through additional data and fine-tuning.
+
+Final Model Performance:
+
+- Training Accuracy: 0.76, F1 Score: 0.78
+- Testing Accuracy: 0.54, F1 Score: 0.57
 
 ![alt text](images/image-4.png)
 
