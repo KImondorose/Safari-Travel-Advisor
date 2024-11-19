@@ -166,7 +166,7 @@ add_header()
 # Load preprocessed dataset dynamically
 @st.cache_data
 def load_preprocessed_data():
-    return pd.read_csv('preprocessed_df.csv')
+    return pd.read_csv('/mount/src/travel-wordfinder/deployment/preprocessed_df.csv')
 
 preprocessed_df = load_preprocessed_data()
 
@@ -186,8 +186,8 @@ def preprocess_text(text):
     lemmatized_tokens = [lemmatizer.lemmatize(token) for token in tokens]
     return [" ".join(lemmatized_tokens)]
 
-final_model = joblib.load('final_model.pkl')
-vectorizer_final = joblib.load('vectorizer_final.pkl')
+final_model = joblib.load('/mount/src/travel-wordfinder/deployment/final_model.pkl')
+vectorizer_final = joblib.load('/mount/src/travel-wordfinder/deployment/vectorizer_final.pkl')
 
 st.markdown("""
     <div style='text-align: right; color: black; font-size: 1.2rem; font-weight: bold; margin-bottom: 2rem;'>
