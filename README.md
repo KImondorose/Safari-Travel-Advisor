@@ -103,7 +103,7 @@ We handled duplicate values by dropping the columns since the records were repet
 
 ## Exploratory Data Analysis
 
-![alt text](image.png)
+![alt text](images/image.png)
 
 Class imbalance was noted particularly between the Asia/Europe/North America group (which has much more data) and the Africa/Oceania/South America/Middle East group (which has fewer data points). we need to address the imbalance
 
@@ -125,11 +125,11 @@ Class imbalance was noted particularly between the Asia/Europe/North America gro
 
 Word clouds illustrating  description of top  attractions in the dataset
 
-  ![alt text](image-1.png)
+  ![alt text](images/image-1.png)
 
 Sample  word clouds for various countries such as Kenya
 
-![alt text](image-2.png)
+![alt text](images/image-2.png)
 
 # EDA Conclusions and Recommendations
 - Countries like Canada, India, Australia, United States, Italy, and France have the highest number of attractions, each showing around 1,000+ attractions in the dataset. These high counts likely indicate these countries have diverse or popular tourist destinations, making them significant for the tourism industry.
@@ -154,9 +154,9 @@ MNB Iteration Three- Using Class Weights to Improve Class Imbalance
 
 We fine-tuned several models (Logistic Regression, Naive Bayes, Decision Tree, etc.) using grid search. The best-performing model was a Gradient Boosting model .
 
-![alt text](image-3.png)
+![alt text](images/image-3.png)
 
-![alt text](image-4.png)
+![alt text](images/image-4.png)
 
 # Conclusions
 
