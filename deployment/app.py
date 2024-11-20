@@ -26,10 +26,10 @@ def add_dynamic_styles():
             --text-color: black;
             --input-bg-light: white;
             --input-text-color-light: black;
-            --input-placeholder-color-light: gray;
-            --input-bg-dark: #333333;
+            --input-placeholder-color-light: black;
+            --input-bg-dark: white;
             --input-text-color-dark: white;
-            --input-placeholder-color-dark: #aaa;
+            --input-placeholder-color-dark: black;
             --card-bg-light: rgba(255, 255, 255, 0.85);
             --card-border-light: #e0e0e0;
             --card-bg-dark: rgba(50, 50, 50, 0.85);
