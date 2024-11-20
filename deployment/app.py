@@ -130,7 +130,7 @@ def add_dynamic_styles():
 
         .stTextInput input {
             color: red !important;
-            font-weight: 50;      
+            font-weight: 100;      
         }
 
         /* For text area if you're using it */
@@ -190,7 +190,7 @@ final_model = joblib.load('/mount/src/travel-wordfinder/deployment/final_model.p
 vectorizer_final = joblib.load('/mount/src/travel-wordfinder/deployment/vectorizer_final.pkl')
 
 st.markdown("""
-    <div style='text-align: right; color: black; font-size: 1.2rem; font-weight: bold; margin-bottom: 2rem;'>
+    <div style='text-align: center; color: black; font-size: 1.2rem; font-weight: bold; margin-bottom: 2rem;'>
         Discover your perfect destination! Share your dream activities, and we'll suggest the ideal places tailored just for you. 
             Try mentioning activities like "hiking mountain trails", "exploring ancient ruins", or "relaxing on beaches."
     </div>
@@ -200,7 +200,7 @@ col1, col2, col3 = st.columns([1,2,1])
 with col2:
     st.markdown(
     """
-    <div style="font-size: 18px; font-weight: bold; color: #FF8C00; margin-bottom: 5px;">
+    <div style="font-size: 20px; font-weight: bolder; color: #FF8C00; margin-bottom: 5px;">
         What's your ideal travel experience? Tell us here:
     </div>
     """,
