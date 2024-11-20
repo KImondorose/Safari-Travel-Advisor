@@ -27,13 +27,23 @@ def add_dynamic_styles():
             padding: 2rem;
         }
         
-        /* Main background with parallax effect */
-        .stApp {
-        background: url("https://images.unsplash.com/photo-1731048935114-4b84ba084619?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")no-repeat center center fixed;
-        background-size: cover; /* Ensures the image covers the entire screen */
-        background-attachment: fixed; /* Parallax effect */
-        margin: 0;
-        padding: 0;
+       .stApp {
+            position: relative; /* Ensures the pseudo-element is positioned correctly */
+            z-index: 0; /* Keep content above the background */
+            background: none; /* Remove direct background from .stApp */
+        }
+
+        .stApp::before {
+            content: "";
+            position: fixed; /* Ensures the background stays fixed during scrolling */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("https://images.unsplash.com/photo-1731048935114-4b84ba084619?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") no-repeat center center;
+            background-size: cover;
+            filter: blur(8px); /* Adjust the blur intensity (e.g., 5px, 10px, etc.) */
+            z-index: -1; /* Keep the blurred background behind the content */
         }
         
         /* Header styling */
