@@ -1,3 +1,4 @@
+
 import streamlit as st
 import re
 import string
@@ -14,157 +15,140 @@ from nltk.tokenize import word_tokenize
 nltk.download('punkt')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
+nltk.download('punkt_tab')
 
 lemmatizer = WordNetLemmatizer()
 
-# Updated function for dynamic styles
 def add_dynamic_styles():
     st.markdown("""
         <style>
-        :root {
-            --bg-color: white;
-            --text-color: black;
-            --input-bg-light: white;
-            --input-text-color-light: black;
-            --input-placeholder-color-light: black;
-            --input-bg-dark: white;
-            --input-text-color-dark: white;
-            --input-placeholder-color-dark: black;
-            --card-bg-light: rgba(255, 255, 255, 0.85);
-            --card-border-light: #e0e0e0;
-            --card-bg-dark: rgba(50, 50, 50, 0.85);
-            --card-border-dark: #555555;
-            --button-bg: #FF8C00;
-            --button-hover-bg: #FFA500;
-            --button-text-light: white;
-            --button-text-dark: black;
+        /* Main container */
+        .main {
+            padding: 2rem;
         }
-
-        /* App background with image */
+        
+        /* Main background with parallax effect */
         .stApp {
-            background: linear-gradient(to bottom, var(--bg-color), var(--bg-color)),
-                        url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") no-repeat center center fixed;
-            background-size: cover;
+        background: url("https://images.unsplash.com/photo-1731048935114-4b84ba084619?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")no-repeat center center fixed;
+        background-size: cover; /* Ensures the image covers the entire screen */
+        background-attachment: fixed; /* Parallax effect */
+        margin: 0;
+        padding: 0;
         }
-
+        
         /* Header styling */
         .header-title {
-            color: var(--text-color);
-            font-size: 3rem !important;
-            font-weight: bold !important;
+            background: linear-gradient(135deg, #FF8C00, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3.5rem !important;
+            font-weight: 800 !important;
             text-align: center;
-            margin: 1rem 0;
+            padding: 2rem 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
-
-        /* Input field styling for light and dark modes */
-        [data-theme="light"] .stTextInput > div > div {
-            background: var(--input-bg-light) !important;
-            color: var(--input-text-color-light) !important;
-            border: 2px solid var(--card-border-light);
+        
+        /* Card styling */
+        .card {
+            background: white;
             border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 25px 0;
             transition: all 0.3s ease;
+            border-left: 5px solid #FF8C00;
         }
-
-        [data-theme="dark"] .stTextInput > div > div {
-            background: white !important;
-            color: black !important;
-            border: 2px solid var(--card-border-dark);
-            border-radius: 15px;
-            transition: all 0.3s ease;
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
-
-        /* Focus styling for input */
-        .stTextInput > div > div:focus-within {
-            border-color: var(--button-bg);
-            box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.2);
+        
+        .card h3 {
+            color: #FF8C00;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
         }
-
-        /* Input text and placeholder styling */
-        [data-theme="light"] .stTextInput input {
-            background: var(--input-bg-light) !important;
-            color: var(--input-text-color-light) !important;
-        }
-
-        [data-theme="dark"] .stTextInput input {
-            background: var(--input-bg-dark) !important;
-            color: var(--input-text-color-dark) !important;
-        }
-
-        [data-theme="light"] .stTextInput input::placeholder {
-            color: var(--input-placeholder-color-light) !important;
-        }
-
-        [data-theme="dark"] .stTextInput input::placeholder {
-            color: var(--input-placeholder-color-dark) !important;
-        }
-
+        
         /* Button styling */
         .stButton > button {
-            background: var(--button-bg);
-            color: var(--button-text-light);
+            background: linear-gradient(135deg, #FF8C00, #FFA500);
+            color: white;
             border: none;
-            border-radius: 25px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            padding: 0.5rem 2rem;
-            transition: background 0.3s ease, transform 0.2s ease;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 300px;
         }
-
+        
         .stButton > button:hover {
-            background: var(--button-hover-bg);
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,140,0,0.3);
         }
-
-        /* Card styling for light and dark modes */
-        [data-theme="light"] .card {
-            background: var(--card-bg-light);
-            color: var(--text-color);
+        
+        /* Input field styling */
+        .stTextInput > div > div {
             border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 1rem;
-            border-left: 5px solid var(--button-bg);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+            background: white;
         }
-
-        [data-theme="dark"] .card {
-            background: var(--card-bg-dark);
-            color: var(--text-color);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 1rem;
-            border-left: 5px solid var(--button-bg);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        
+        .stTextInput > div > div:focus-within {
+            border-color: #FF8C00;
+            box-shadow: 0 0 0 3px rgba(255,140,0,0.2);
         }
-
-        .card h3 {
-            color: var(--button-bg);
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: var(--text-color);
-        }
-
+        
         /* Footer styling */
         .footer {
             text-align: center;
-            margin-top: 2rem;
-            padding: 1rem;
-            border-top: 1px solid var(--card-border-light);
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
         }
-
+        
         .footer a {
-            color: var(--button-bg);
+            color: #FF8C00;
             text-decoration: none;
-            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        
+        .footer a:hover {
+            color: #FFA500;
+        }
+        
+        .stTextInput > div > div {
+            border-radius: 15px;
+            border: 2px solid var(--card-border);
+            transition: all 0.3s ease;
+            background: var(--card-bg) !important;
+            color: var(--text-color) !important;
         }
 
-        .footer a:hover {
-            color: var(--button-hover-bg);
+        .stTextInput input {
+            color: black !important;
+                
+        }
+
+        /* For text area if you're using it */
+            .stTextArea textarea {
+            color: var(--text-color) !important;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 2.5rem !important;
+            }
+            .card {
+                padding: 15px;
+            }
         }
         </style>
     """, unsafe_allow_html=True)
-
 
 def add_header():
     st.markdown("""
@@ -172,6 +156,12 @@ def add_header():
             <h1 class="header-title">🌍 Safari Travel Advisor</h1>
         </div>
     """, unsafe_allow_html=True)
+
+# [Rest of your existing code remains the same until the app layout section]
+
+# App layout
+add_dynamic_styles()
+add_header()
 
 # Load preprocessed dataset dynamically
 @st.cache_data
@@ -199,23 +189,22 @@ def preprocess_text(text):
 final_model = joblib.load('/mount/src/travel-wordfinder/deployment/final_model.pkl')
 vectorizer_final = joblib.load('/mount/src/travel-wordfinder/deployment/vectorizer_final.pkl')
 
-add_dynamic_styles()
-add_header()
-
 st.markdown("""
-    <div style='text-align: right; font-size: 1.2rem; font-weight: bold; margin-bottom: 2rem; color: var(--text-color);'>
-        Discover your perfect destination! Share your dream activities, and we'll suggest the ideal places tailored just for you.
+    <div style='text-align: right; color: black; font-size: 1.2rem; font-weight: bold; margin-bottom: 2rem;'>
+        Discover your perfect destination! Share your dream activities, and we'll suggest the ideal places tailored just for you. 
+            Try mentioning activities like "hiking mountain trails", "exploring ancient ruins", or "relaxing on beaches."
     </div>
 """, unsafe_allow_html=True)
 
-col1, col2, col3 = st.columns([1, 2, 1])
+col1, col2, col3 = st.columns([1,2,1])
 with col2:
-    user_query = st.TextInput(
+    user_query = st.text_input(
         "**What's your ideal travel experience?**",
         placeholder="E.g., 'Alpine meadows and glaciers, wildlife viewing...'"
     ).strip()
-
+    
     predict_button = st.button("🔍 Find My Perfect Destination", use_container_width=True)
+
 
 if predict_button:
     if user_query:
@@ -225,10 +214,11 @@ if predict_button:
             
             st.markdown(f"""
                 <div style='text-align: center; padding: 2rem;'>
-                    <h2 style='color: var(--button-bg); margin-bottom: 1rem;'>Your Perfect Destination:</h2>
-                    <h1 style='color: var(--button-bg); font-size: 3rem; margin-bottom: 2rem;'>{predicted_country} 🎯</h1>
+                    <h2 style='color: #FF8C00; margin-bottom: 1rem;'>Your Perfect Destination:</h2>
+                    <h1 style='color: #FF8C00; font-size: 3rem; margin-bottom: 2rem;'>{predicted_country} 🎯</h1>
                 </div>
             """, unsafe_allow_html=True)
+
 
             filtered_data = preprocessed_df[preprocessed_df['Country'] == predicted_country]
             
@@ -242,13 +232,13 @@ if predict_button:
                 
                 top_attractions = filtered_data.sort_values(by='Similarity', ascending=False).head(5)
                 
-                st.markdown("<h2 style='color: var(--button-bg); text-align: center;'>Recommended Experiences</h2>", unsafe_allow_html=True)
+                st.markdown("<h2 style='color: #FF8C00; text-align: center;'>Recommended Experiences</h2>", unsafe_allow_html=True)
                 
                 for idx, row in top_attractions.iterrows():
                     st.markdown(f"""
                         <div class="card">
                             <h3>✨ {row['Attraction']}</h3>
-                            <p>{row['Description']}</p>
+                            <p style='color: #444; line-height: 1.6;'>{row['Description']}</p>
                         </div>
                     """, unsafe_allow_html=True)
             else:
@@ -256,15 +246,17 @@ if predict_button:
                 
         except Exception as e:
             st.error("Oops! Something went wrong. Please try again.")
-            print(f"Error: {str(e)}")
+            print(f"Error: {str(e)}")  # For debugging
     else:
         st.warning("Please share your travel preferences first!")
 
 st.markdown("""
     <div class="footer">
-        <p>
+        <p style="color: red; font-weight: bold;">
             View code on 
-            <a href="https://github.com/KImondorose/Travel-WordFinder" target="_blank">GitHub</a>
+            <a href="https://github.com/KImondorose/Travel-WordFinder" target="_blank" style="color: red; font-weight: bold; text-decoration: underline;">
+                <u>GitHub</u>
+            </a>
         </p>
     </div>
 """, unsafe_allow_html=True)
