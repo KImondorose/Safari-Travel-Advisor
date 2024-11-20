@@ -24,27 +24,20 @@ def add_dynamic_styles():
         :root {
             --bg-color: white;
             --text-color: black;
-            --input-bg: white;
-            --input-text-color: black;
-            --input-placeholder-color: gray;
-            --card-bg: rgba(255, 255, 255, 0.85);
-            --card-border: #e0e0e0;
+            --input-bg-light: white;
+            --input-text-color-light: black;
+            --input-placeholder-color-light: gray;
+            --input-bg-dark: #333333;
+            --input-text-color-dark: white;
+            --input-placeholder-color-dark: #aaa;
+            --card-bg-light: rgba(255, 255, 255, 0.85);
+            --card-border-light: #e0e0e0;
+            --card-bg-dark: rgba(50, 50, 50, 0.85);
+            --card-border-dark: #555555;
             --button-bg: #FF8C00;
             --button-hover-bg: #FFA500;
-            --button-text: white;
-        }
-
-        [data-theme="dark"] {
-            --bg-color: rgba(0, 0, 0, 0.8);
-            --text-color: white;
-            --input-bg: #333333; /* Dark gray background for input in dark mode */
-            --input-text-color: white; /* White text for input in dark mode */
-            --input-placeholder-color: #aaa;
-            --card-bg: rgba(50, 50, 50, 0.85);
-            --card-border: #555555;
-            --button-bg: #FFA500;
-            --button-hover-bg: #FFCC66;
-            --button-text: black;
+            --button-text-light: white;
+            --button-text-dark: black;
         }
 
         /* App background with image */
@@ -63,33 +56,52 @@ def add_dynamic_styles():
             margin: 1rem 0;
         }
 
-        /* Input field styling */
-        .stTextInput > div > div {
-            background: var(--input-bg) !important; /* Ensures consistent input background */
-            color: var(--input-text-color) !important; /* Ensures visible input text */
-            border: 2px solid var(--card-border);
+        /* Input field styling for light and dark modes */
+        [data-theme="light"] .stTextInput > div > div {
+            background: var(--input-bg-light) !important;
+            color: var(--input-text-color-light) !important;
+            border: 2px solid var(--card-border-light);
             border-radius: 15px;
             transition: all 0.3s ease;
         }
 
+        [data-theme="dark"] .stTextInput > div > div {
+            background: var(--input-bg-dark) !important;
+            color: var(--input-text-color-dark) !important;
+            border: 2px solid var(--card-border-dark);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        /* Focus styling for input */
         .stTextInput > div > div:focus-within {
             border-color: var(--button-bg);
             box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.2);
         }
 
-        .stTextInput input {
-            background: var(--input-bg) !important; /* Explicit background for input */
-            color: var(--input-text-color) !important; /* Explicit text color for input */
+        /* Input text and placeholder styling */
+        [data-theme="light"] .stTextInput input {
+            background: var(--input-bg-light) !important;
+            color: var(--input-text-color-light) !important;
         }
 
-        .stTextInput input::placeholder {
-            color: var(--input-placeholder-color) !important; /* Placeholder color */
+        [data-theme="dark"] .stTextInput input {
+            background: var(--input-bg-dark) !important;
+            color: var(--input-text-color-dark) !important;
+        }
+
+        [data-theme="light"] .stTextInput input::placeholder {
+            color: var(--input-placeholder-color-light) !important;
+        }
+
+        [data-theme="dark"] .stTextInput input::placeholder {
+            color: var(--input-placeholder-color-dark) !important;
         }
 
         /* Button styling */
         .stButton > button {
             background: var(--button-bg);
-            color: var(--button-text);
+            color: var(--button-text-light);
             border: none;
             border-radius: 25px;
             font-size: 1.2rem;
@@ -103,9 +115,19 @@ def add_dynamic_styles():
             transform: translateY(-2px);
         }
 
-        /* Card styling */
-        .card {
-            background: var(--card-bg);
+        /* Card styling for light and dark modes */
+        [data-theme="light"] .card {
+            background: var(--card-bg-light);
+            color: var(--text-color);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 1rem;
+            border-left: 5px solid var(--button-bg);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] .card {
+            background: var(--card-bg-dark);
             color: var(--text-color);
             border-radius: 15px;
             padding: 20px;
@@ -128,7 +150,7 @@ def add_dynamic_styles():
             text-align: center;
             margin-top: 2rem;
             padding: 1rem;
-            border-top: 1px solid var(--card-border);
+            border-top: 1px solid var(--card-border-light);
         }
 
         .footer a {
