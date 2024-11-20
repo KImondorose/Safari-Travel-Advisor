@@ -54,7 +54,7 @@ def add_dynamic_styles():
         }
         [data-theme="dark"] .stTextInput > div > div {
             background-color: #333333 !important;
-            color: white !important;
+            color: white !important; /* Ensures input text is visible */
             border: 2px solid #555555 !important;
         }
 
@@ -64,6 +64,15 @@ def add_dynamic_styles():
         }
         [data-theme="dark"] .stTextInput input::placeholder {
             color: #aaaaaa !important;
+        }
+
+        /* Prompt Text (Label) Styling */
+        label {
+            color: black !important;
+            font-weight: bold;
+        }
+        [data-theme="dark"] label {
+            color: white !important; /* Ensures label is visible */
         }
 
         /* Button Styling */
@@ -81,11 +90,12 @@ def add_dynamic_styles():
         </style>
     """, unsafe_allow_html=True)
 
+
 # Header Function
 def add_header():
     st.markdown("""
         <div>
-            <h1 class="header-title">🌍 Safari Travel Advisor</h1>
+            <h1 class="header-title">🌍 Safari Travel Advisors</h1>
         </div>
     """, unsafe_allow_html=True)
 
