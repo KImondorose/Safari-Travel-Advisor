@@ -21,81 +21,93 @@ lemmatizer = WordNetLemmatizer()
 def add_dynamic_styles():
     st.markdown("""
         <style>
+        :root {
+            --background-light: white;
+            --text-color-light: black;
+            --input-bg-light: white;
+            --input-text-light: black;
+            --placeholder-light: gray;
+
+            --background-dark: #121212;
+            --text-color-dark: white;
+            --input-bg-dark: #333333;
+            --input-text-dark: white;
+            --placeholder-dark: #aaaaaa;
+        }
+
         /* General App Background */
         .stApp {
-            background: linear-gradient(to bottom, white, white),
-                        url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") no-repeat center center fixed;
-            background-size: cover;
+            background: var(--background-light);
+            color: var(--text-color-light);
         }
         [data-theme="dark"] .stApp {
-            background: linear-gradient(to bottom, #121212, #121212),
-                        url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") no-repeat center center fixed;
-            background-size: cover;
+            background: var(--background-dark);
+            color: var(--text-color-dark);
         }
 
         /* Header Styling */
         .header-title {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: bold;
             text-align: center;
-            color: black !important;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-color-light);
         }
         [data-theme="dark"] .header-title {
-            color: white !important;
+            color: var(--text-color-dark);
         }
 
         /* Input Box Styling */
         .stTextInput > div > div {
-            background-color: white !important;
-            color: black !important;
-            border: 2px solid #ccc !important;
-            border-radius: 8px !important;
+            background-color: var(--input-bg-light);
+            color: var(--input-text-light);
+            border: 1px solid #ccc;
+            border-radius: 8px;
         }
         [data-theme="dark"] .stTextInput > div > div {
-            background-color: #333333 !important;
-            color: white !important; /* Ensures input text is visible */
-            border: 2px solid #555555 !important;
+            background-color: var(--input-bg-dark);
+            color: var(--input-text-dark);
         }
 
-        /* Placeholder Text Styling */
         .stTextInput input::placeholder {
-            color: gray !important;
+            color: var(--placeholder-light);
         }
         [data-theme="dark"] .stTextInput input::placeholder {
-            color: #aaaaaa !important;
-        }
-
-        /* Prompt Text (Label) Styling */
-        label {
-            color: black !important;
-            font-weight: bold;
-        }
-        [data-theme="dark"] label {
-            color: white !important; /* Ensures label is visible */
+            color: var(--placeholder-dark);
         }
 
         /* Button Styling */
         .stButton button {
-            background-color: #FF8C00 !important;
-            color: white !important;
-            border-radius: 8px !important;
-            font-size: 1.2rem !important;
-            font-weight: bold !important;
+            background-color: #FF8C00;
+            color: white;
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
         }
         .stButton button:hover {
-            background-color: #FFA500 !important;
-            color: white !important;
+            background-color: #FFA500;
+        }
+
+        /* Footer Styling */
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-color-light);
+        }
+        [data-theme="dark"] .footer {
+            color: var(--text-color-dark);
         }
         </style>
     """, unsafe_allow_html=True)
-
 
 # Header Function
 def add_header():
     st.markdown("""
         <div>
-            <h1 class="header-title">🌍 Safari Travel Advisors</h1>
+            <h1 class="header-title">🌍 Safari Travel Advisor</h1>
         </div>
     """, unsafe_allow_html=True)
 
@@ -126,7 +138,6 @@ vectorizer_final = joblib.load('/mount/src/travel-wordfinder/deployment/vectoriz
 add_dynamic_styles()
 add_header()
 
-# User Input and Prediction
 st.markdown("""
     <div style="text-align: right; margin-bottom: 1rem; font-size: 1.2rem;">
         Enter your dream travel experience below, and let us find the perfect destination for you!
