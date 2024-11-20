@@ -66,8 +66,8 @@ def add_dynamic_styles():
         }
 
         [data-theme="dark"] .stTextInput > div > div {
-            background: var(--input-bg-dark) !important;
-            color: var(--input-text-color-dark) !important;
+            background: white !important;
+            color: black !important;
             border: 2px solid var(--card-border-dark);
             border-radius: 15px;
             transition: all 0.3s ease;
