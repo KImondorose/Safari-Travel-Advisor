@@ -24,6 +24,9 @@ def add_dynamic_styles():
         :root {
             --bg-color: white;
             --text-color: black;
+            --input-bg: white;
+            --input-text-color: black;
+            --input-placeholder-color: gray;
             --card-bg: rgba(255, 255, 255, 0.85);
             --card-border: #e0e0e0;
             --button-bg: #FF8C00;
@@ -32,8 +35,11 @@ def add_dynamic_styles():
         }
 
         [data-theme="dark"] {
-            --bg-color: rgba(0, 0, 0, 0.7);
+            --bg-color: rgba(0, 0, 0, 0.8);
             --text-color: white;
+            --input-bg: #2b2b2b;
+            --input-text-color: white;
+            --input-placeholder-color: #aaa;
             --card-bg: rgba(50, 50, 50, 0.85);
             --card-border: #555555;
             --button-bg: #FFA500;
@@ -59,8 +65,8 @@ def add_dynamic_styles():
 
         /* Input field styling */
         .stTextInput > div > div {
-            background: var(--card-bg) !important;
-            color: var(--text-color) !important;
+            background: var(--input-bg) !important;
+            color: var(--input-text-color) !important;
             border: 2px solid var(--card-border);
             border-radius: 15px;
             transition: all 0.3s ease;
@@ -72,7 +78,11 @@ def add_dynamic_styles():
         }
 
         .stTextInput input {
-            color: var(--text-color) !important;
+            color: var(--input-text-color) !important;
+        }
+
+        .stTextInput input::placeholder {
+            color: var(--input-placeholder-color) !important;
         }
 
         /* Button styling */
@@ -131,6 +141,7 @@ def add_dynamic_styles():
         }
         </style>
     """, unsafe_allow_html=True)
+
 
 def add_header():
     st.markdown("""
