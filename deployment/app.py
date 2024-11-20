@@ -37,8 +37,8 @@ def add_dynamic_styles():
         [data-theme="dark"] {
             --bg-color: rgba(0, 0, 0, 0.8);
             --text-color: white;
-            --input-bg: #2b2b2b;
-            --input-text-color: white;
+            --input-bg: #333333; /* Dark gray background for input in dark mode */
+            --input-text-color: white; /* White text for input in dark mode */
             --input-placeholder-color: #aaa;
             --card-bg: rgba(50, 50, 50, 0.85);
             --card-border: #555555;
@@ -65,8 +65,8 @@ def add_dynamic_styles():
 
         /* Input field styling */
         .stTextInput > div > div {
-            background: var(--input-bg) !important;
-            color: var(--input-text-color) !important;
+            background: var(--input-bg) !important; /* Ensures consistent input background */
+            color: var(--input-text-color) !important; /* Ensures visible input text */
             border: 2px solid var(--card-border);
             border-radius: 15px;
             transition: all 0.3s ease;
@@ -78,11 +78,12 @@ def add_dynamic_styles():
         }
 
         .stTextInput input {
-            color: var(--input-text-color) !important;
+            background: var(--input-bg) !important; /* Explicit background for input */
+            color: var(--input-text-color) !important; /* Explicit text color for input */
         }
 
         .stTextInput input::placeholder {
-            color: var(--input-placeholder-color) !important;
+            color: var(--input-placeholder-color) !important; /* Placeholder color */
         }
 
         /* Button styling */
