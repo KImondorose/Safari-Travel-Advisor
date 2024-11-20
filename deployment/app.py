@@ -130,7 +130,7 @@ def add_dynamic_styles():
 
         .stTextInput input {
             color: red !important;
-                
+            font-weight: 50;      
         }
 
         /* For text area if you're using it */
@@ -200,8 +200,8 @@ col1, col2, col3 = st.columns([1,2,1])
 with col2:
     st.markdown(
     """
-    <div style="font-size: 18px; font-weight: bold; color: #FF8C00; margin-bottom: 10px;">
-        What's your ideal travel experience?
+    <div style="font-size: 18px; font-weight: bold; color: #FF8C00; margin-bottom: 5px;">
+        What's your ideal travel experience? Tell us here:
     </div>
     """,
     unsafe_allow_html=True
