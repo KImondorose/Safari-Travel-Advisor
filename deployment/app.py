@@ -198,9 +198,19 @@ st.markdown("""
 
 col1, col2, col3 = st.columns([1,2,1])
 with col2:
+    st.markdown(
+    """
+    <div style="font-size: 18px; font-weight: bold; color: #FF8C00; margin-bottom: 10px;">
+        What's your ideal travel experience?
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+# Text input field without a label
     user_query = st.text_input(
-        "**What's your ideal travel experience?**",
-        placeholder="E.g., 'Alpine meadows and glaciers, wildlife viewing...'"
+    label="",
+    placeholder="E.g., 'Alpine meadows and glaciers, wildlife viewing...'"
     ).strip()
     
     predict_button = st.button("🔍 Find My Perfect Destination", use_container_width=True)
