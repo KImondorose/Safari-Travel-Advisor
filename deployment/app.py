@@ -200,6 +200,7 @@ st.markdown("""
 col1, col2, col3 = st.columns([1,2,1])
 with col2:
     user_query = st.text_input(
+        "**Tell Us Here:",
         placeholder="E.g., 'Alpine meadows and glaciers, wildlife viewing...'"
     ).strip()
     
