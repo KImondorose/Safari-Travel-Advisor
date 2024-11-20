@@ -192,14 +192,14 @@ vectorizer_final = joblib.load('/mount/src/travel-wordfinder/deployment/vectoriz
 st.markdown("""
     <div style='text-align: right; color: black; font-size: 1.2rem; font-weight: bold; margin-bottom: 2rem;'>
         Discover your perfect destination! Share your dream activities, and we'll suggest the ideal places tailored just for you. 
-            Try mentioning activities like "hiking mountain trails", "exploring ancient ruins", or "relaxing on beaches."
+            Try mentioning activities like "hiking mountain trails", "exploring ancient ruins", or "relaxing on beaches.
+            What's your ideal travel experience?"
     </div>
 """, unsafe_allow_html=True)
 
 col1, col2, col3 = st.columns([1,2,1])
 with col2:
     user_query = st.text_input(
-        "**What's your ideal travel experience?**",
         placeholder="E.g., 'Alpine meadows and glaciers, wildlife viewing...'"
     ).strip()
     
