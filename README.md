@@ -5,12 +5,19 @@
 # Project Links
  
  Web App- [Safari Travel Advisor](https://safari-travel-advisor.streamlit.app/)
+
  [Slideshow Presentation](https://www.canva.com/design/DAGW3KYcMBw/y9W7zhPEvOwhzUEG1OOuYQ/edit)
+
  [Jupyter Notebook with Cleaning and Questions](https://github.com/KImondorose/Travel-WordFinder/blob/main/main_notebook.ipynb)
+
  [Notebook PDF](https://github.com/KImondorose/Travel-WordFinder/blob/main/main_notebook.pdf)
+
  [Data Sources](https://github.com/KImondorose/Travel-WordFinder/tree/main/Data)
+
  [Data Scraping Python File](https://github.com/KImondorose/Travel-WordFinder/blob/main/Scraping_Python_File/lonely_planet_scraper.py)
+
  [Deployment Folder](https://github.com/KImondorose/Safari-Travel-Advisor/tree/main/deployment)
+ 
  [Individual Group Member Contributions](https://github.com/KImondorose/Travel-WordFinder/tree/main/work_in_progress)
 
  # Introduction, Business Statement, and Business Understanding
