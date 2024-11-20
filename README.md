@@ -12,6 +12,8 @@
 
  [Data Sources](https://github.com/KImondorose/Travel-WordFinder/tree/main/Data)
 
+ [Data Scraping Python File](https://github.com/KImondorose/Travel-WordFinder/blob/main/Scraping_Python_File/lonely_planet_scraper.py)
+
  [Individual Group Member Contributions](https://github.com/KImondorose/Travel-WordFinder/tree/main/work_in_progress)
 
  # Introduction, Business Statement, and Business Understanding
@@ -82,21 +84,8 @@ The attraction descriptions serve as the core feature for the model, as they enc
 ## 3. Utility for the Real-World Problem
 The dataset is diverse and granular, with 18,040 unique attraction descriptions across 25 countries. Its richness and alignment with user interests make it suitable for creating a system that predicts destinations based on minimal user input. The data enables the model to generalize across a wide range of preferences, effectively addressing the challenge of personalized travel suggestions/recommendations.
 
-## Data Limitations
-While the dataset provides a solid foundation for a destination prediction system, several limitations could impact the model's performance and generalizability:
-
-- Imbalanced Dataset: Some countries have significantly more attractions than others, potentially biasing the model toward over-represented countries. To address this, techniques like oversampling (e.g., SMOTE) or undersampling will be applied, and evaluation metrics like F1-score will ensure fair assessment across classes.
-
-- Non-English Text: Some descriptions contain non-English words, which may introduce noise as the primary target language is English. This will be handled by translating non-English text where feasible or filtering it out during preprocessing.
-
-- Text Cleaning: Raw text often includes irrelevant characters, stopwords, or inconsistencies. Cleaning will involve removing punctuation, stopwords, and applying lemmatization to standardize and refine the input data.
-
-- Limited Geographic Scope: The dataset covers only 25 countries, limiting global applicability. Future iterations can incorporate additional data from other platforms or regions to expand coverage, with potential use of transfer learning to adapt the model to new data.
-
-- By addressing these challenges through targeted preprocessing and robust modeling strategies, the project aims to ensure accurate and scalable predictions while laying the groundwork for future enhancements.
-
 ## Data Cleaning
-We handled duplicate values by dropping the columns since the records were repetitive
+We handled duplicate values by dropping some columns whose records were repetitive
 
 ## Exploratory Data Analysis
 
@@ -123,6 +112,7 @@ Class imbalance was noted particularly between the Asia/Europe/North America gro
 Word clouds illustrating  description of top  attractions in the dataset
 
   ![alt text](images/image-1.png)
+  ![alt text]()
 
 Sample  word clouds for various countries such as Kenya
 
